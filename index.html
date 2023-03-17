@@ -37,21 +37,23 @@
                     </div>
     
                 </div>
+                
                 <div class="search-container">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <span>Search or start new chat</span>
                 </div>
+
                 <div class="contacts-container">
-                    <div class="contact">
+                    <div class="contact" v-for="(contact, index) in contacts" >
                         <div class="contact-info">
-                            <img src="img/avatar_1.jpg" alt="">
+                            <img :src="contact.avatar" :alt="contact.name">
                             <div class="contact-text">
-                                <h4>Michele</h4>
+                                <h4>{{contact.name}}</h4>
                                 <p>Last message</p>
                             </div>
                         </div>
                         <div class="time">
-                            <p>12:00</p>
+                            <p>{{contact.date}}</p>
                         </div>
                     </div>
     
