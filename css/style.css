@@ -20,6 +20,7 @@ body {
 .side-bar-container {
     flex: calc((1/3)* 100%);
     background-color: lightcoral;
+  
 }
 
 
@@ -95,6 +96,8 @@ color: grey;
 .contacts-container {
     overflow-y: scroll;
     flex: 1 0 0;
+    height: calc(100% - 146px);
+ 
 }
 
 .contact {
@@ -128,7 +131,7 @@ color: grey;
 }
 .chat-container {
     width: 100%;
-    flex: calc((2/3)* 100%);
+    flex:  calc((2/3)* 100%);
     background-image: url(../img/mine.jpg);
     display: flex;
     flex-direction: column;
