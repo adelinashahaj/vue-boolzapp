@@ -170,22 +170,25 @@ createApp({
     methods: {
         activChat(index){
             this.activeIndex = index;
-        }   
-    },
-    sendMessage(){ //TODO: insert check empty string 
-        this.contacts[this.activeIndex].messages.push({
-            date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
-            message: this.newMessage,
-            status: 'sent'
-        });
-        this.newMessage = '';
-       
-        setTimeout(() => {
+        },
+        addMessage(){ 
+            console.log(this.activeIndex);
             this.contacts[this.activeIndex].messages.push({
                 date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
-                message: 'Ok',
-                status: 'received'
-            });
-        }, 1500);
+                message: this.newMessage,
+                status: 'sent'
+         });
+            this.newMessage= '';
+           
+            setTimeout(() => {
+                this.contacts[this.activeIndex].messages.push({
+                    date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
+                    message: 'Ok',
+                    status: 'received'
+                });
+            }, 1000);
+        
+        }   
     }
+    
 }).mount('#app')

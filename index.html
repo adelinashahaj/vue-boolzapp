@@ -63,10 +63,10 @@
             <div class="chat-container">
 
                 <div class="contact-chat-bar">
-                    <div class="contact-info">
+                    <div class="contact-info" >
                         <img src="img/avatar_1.jpg" alt="">
                         <div class="contact-tex">
-                            <h4>Michele</h4>
+                            <h4>{{contacts[activeIndex].name}}</h4>
                             <p>Ultimo accesso oggi alle 12.00</p>
                             
                         </div>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="write-bar">
                     <i class="fa-regular fa-face-smile"></i>
-                    <input type="text"  placeholder="Message" class="keyboard" v-model="newMessage" @keyup.enter="sendMessage">
+                    <input type="text" placeholder="Scrivi un messaggio" class="keyboard" v-model="newMessage" @keyup.enter="addMessage">
                     <i class="fa-solid fa-microphone"></i>
                 </div>
     
