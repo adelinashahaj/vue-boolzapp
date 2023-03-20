@@ -198,6 +198,10 @@ createApp({
                 contact.visible = false;
                 }
                 } )
-    }
-  } 
+    },
+    deletemessage(){
+        this.contacts[this.activeIndex].messages.splice(-1);
+      } 
+  }
+  
 }).mount('#app')

@@ -65,8 +65,8 @@
 
                 <div class="contact-chat-bar">
                     <div class="contact-info" >
-                        <img src="img/avatar_1.jpg" alt="">
-                        <div class="contact-tex">
+                        <img :src="contacts[activeIndex].avatar" alt="">
+                        <div class="contact-tex" >
                             <h4>{{contacts[activeIndex].name}}</h4>
                             <p>Ultimo accesso oggi alle 12.00</p>
                             
@@ -87,10 +87,13 @@
                             <p>{{message.date}}</p>
                         </div>
                         <i class="fa-solid fa-chevron-down message-menu-toggler"></i>
+                        <ul class="message-menu">
+                            <li>Message info</li>
+                            <li @click="deletemessage()">Message delete</li>
+                        </ul>
                         
                     </div>
                    
-    
                 </div>
                 <div class="write-bar">
                     <i class="fa-regular fa-face-smile"></i>
