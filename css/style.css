@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
 }
+
 body {
     background: linear-gradient(180deg, #009688 10%, #DADBD4 10%);
     height: 100vh;
@@ -26,7 +27,7 @@ body {
 
 .user-info-container {
     padding: 0.5rem;
-    background-color: lightskyblue;
+    background-color: rgb(231, 228, 228);
     display: flex; 
     justify-content: space-between;
     align-items: center;
@@ -56,9 +57,9 @@ body {
 }
 
 .notifications-container {
-    background-color: lightpink;
+    
     height: 50px;
-    background-color: lightblue;
+    background-color: lightskyblue;
     padding: 1rem;
     display: flex;
     align-items: center;
@@ -66,12 +67,12 @@ body {
 
 
 .noti-icon i {
-background-color: white;
-color: lightblue;
-font-size: 1.2rem;
-border-radius: 5rem;
-padding: 8px;
-margin-right: 5px;
+   background-color: white;
+   color: lightblue;
+   font-size: 1.2rem;
+   border-radius: 5rem;
+   padding: 8px;
+   margin-right: 5px;
 }
 
 .noti-text p {
@@ -99,10 +100,14 @@ color: grey;
     height: calc(100% - 146px);
  
 }
+.time p{
+    color: gray;
+    font-size: 10px;
+}
 
 .contact {
     background-color: white;
-    border: 1px solid black;
+   border-bottom: 1px solid gray;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
@@ -138,11 +143,12 @@ color: grey;
 }
 
 .contact-chat-bar{
-    background-color: white;
+    background-color: rgb(231, 228, 228);
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-left: 1px solid rgb(212, 210, 210);
 }
 
 .chat {
@@ -151,6 +157,8 @@ color: grey;
     display: flex;
     flex-direction: column;
     padding: 10px;
+    min-width: 250px;
+   
 }
 .chat img{
     width: 100%;
@@ -182,13 +190,42 @@ color: grey;
 }
 .message {
     padding: 1rem;
-    
+    min-width: 120px;
     max-width:  40%;
     border-radius: 0.5rem;
+    overflow-wrap: break-word;
+    flex: 0 1 auto;
+    margin-bottom: 0.5rem  ;
+    position: relative;
 }
+.message .send-date {
+    position: absolute;
+    right: 0.5rem;
+    
+    font-size: 0.7rem;
+}
+
+.message .message-menu-toggler {
+    display: none;
+}
+
+.message:hover .message-menu-toggler {
+    display: block;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+}
+.message .message-menu-toggler:hover {
+    cursor: pointer;
+}
+
+
+
+
 .chat .sms-green{
     align-self: flex-end;
     background-color: rgb(135, 199, 135);
+    padding-bottom: 10px;
    
 }
 .chat .sms-white{

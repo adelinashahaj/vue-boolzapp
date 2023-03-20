@@ -13,6 +13,7 @@
 <body>
 
     <div id="app">
+     
         
         <div class="container">
             <div class="side-bar-container">
@@ -44,12 +45,12 @@
                 </div>
 
                 <div class="contacts-container">
-                    <div class="contact" v-for="(contact, index) in contacts" >
+                    <div @click="activChat(index)" class="contact" v-for="(contact, index) in contacts" >
                         <div class="contact-info">
                             <img :src="contact.avatar" :alt="contact.name">
                             <div class="contact-text">
                                 <h4>{{contact.name}}</h4>
-                                <p>Last message</p>
+                                <p>{{contact.messages[contact.messages.length - 1].message}}</p>
                             </div>
                         </div>
                         <div class="time">
@@ -66,7 +67,8 @@
                         <img src="img/avatar_1.jpg" alt="">
                         <div class="contact-tex">
                             <h4>Michele</h4>
-                            <p>Last message</p>
+                            <p>Ultimo accesso oggi alle 12.00</p>
+                            
                         </div>
                     </div>
                     <div class="icons">
@@ -75,28 +77,36 @@
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
+
                 <div class="chat">
-                    <div class=" message sms-green">dgreg</div>
-                    <div class=" message sms-white">rggergr</div>
                     
+                    <div class="message" :class="message.status=='sent'?'sms-green':'sms-white'"  v-for="message in contacts[activeIndex].messages">
+                        <p>{{message.message}}</p>
+                        <div class="send-date">
+                            <p>{{message.date}}</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-down message-menu-toggler"></i>
+                        
+                    </div>
+                   
     
                 </div>
                 <div class="write-bar">
                     <i class="fa-regular fa-face-smile"></i>
-                    <input type="text"  placeholder="Message" class="keyboard">
+                    <input type="text"  placeholder="Message" class="keyboard" v-model="newMessage" @keyup.enter="sendMessage">
                     <i class="fa-solid fa-microphone"></i>
                 </div>
     
             </div>
         </div>
-    </body>
+    
     
     </div>
 
 
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </body>

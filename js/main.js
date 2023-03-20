@@ -1,3 +1,5 @@
+const DateTime = luxon.DateTime;
+
 const {
     createApp
 } = Vue
@@ -5,7 +7,9 @@ const {
 createApp({
     data() {
         return {
-
+            activeIndex: 0,
+            newMessage: '',
+            
             contacts: [{
                     name: 'Michele',
                     avatar: './img/avatar_1.jpg',
@@ -161,5 +165,27 @@ createApp({
                 }
             ]
         }
+       
+    },
+    methods: {
+        activChat(index){
+            this.activeIndex = index;
+        }   
+    },
+    sendMessage(){ //TODO: insert check empty string 
+        this.contacts[this.activeIndex].messages.push({
+            date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
+            message: this.newMessage,
+            status: 'sent'
+        });
+        this.newMessage = '';
+       
+        setTimeout(() => {
+            this.contacts[this.activeIndex].messages.push({
+                date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
+                message: 'Ok',
+                status: 'received'
+            });
+        }, 1500);
     }
 }).mount('#app')
