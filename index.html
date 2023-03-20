@@ -33,19 +33,20 @@
                         <i class="fa-solid fa-bell-slash"></i>
                     </div>
                     <div  class="noti-text">
-                        <p>Receive notifications of new messages</p>
-                        <a href="">Turn on desktop notifications</a>
+                        <p>Ricevi notifiche di nuovi messaggi</p>
+                        <a href="">Attiva notifiche destop</a>
                     </div>
     
                 </div>
 
                 <div class="search-container">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <span>Search or start new chat</span>
+                    <input type="text"placeholder="Cerca o inizia una nuova chat" @keyup="searchContacts()" v-model="searchString">
                 </div>
 
                 <div class="contacts-container">
-                    <div @click="activChat(index)" class="contact" v-for="(contact, index) in contacts" >
+
+                    <div @click="activChat(index)" class="contact" v-for="(contact, index) in contacts"  v-show="contact.visible == true">
                         <div class="contact-info">
                             <img :src="contact.avatar" :alt="contact.name">
                             <div class="contact-text">
@@ -54,7 +55,7 @@
                             </div>
                         </div>
                         <div class="time">
-                            <p>12.00</p>
+                            <p>{{contact.messages[contact.messages.length - 1].date}}</p>
                         </div>
                     </div>
     

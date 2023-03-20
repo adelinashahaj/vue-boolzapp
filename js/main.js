@@ -9,7 +9,7 @@ createApp({
         return {
             activeIndex: 0,
             newMessage: '',
-            
+            searchString: '',
             contacts: [{
                     name: 'Michele',
                     avatar: './img/avatar_1.jpg',
@@ -188,7 +188,16 @@ createApp({
                 });
             }, 1000);
         
-        }   
+        },
+        searchContacts() {
+           
+         this.contacts.forEach(contact =>{
+             if (contact.name.toLowerCase().includes(this.searchString.toLowerCase())) {
+                contact.visible = true;
+             } else {
+                contact.visible = false;
+                }
+                } )
     }
-    
+  } 
 }).mount('#app')
