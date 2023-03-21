@@ -47,19 +47,21 @@
 
                 <div class="contacts-container">
 
-                    <div @click="activChat(index)" class="contact" v-for="(contact, index) in contacts"  
+                    <div @click="activChat(index)" class="contact" v-for="(contact, index) in contacts" 
                     v-show="contact.visible == true" 
                     :class="index==activeIndex?'active':''">
                         <div class="contact-info">
                             <img :src="contact.avatar" :alt="contact.name">
                             <div class="contact-text">
                                 <h4>{{contact.name}}</h4>
-                                <p>{{contact.messages[contact.messages.length - 1].message}}</p>
+                                <p v-if="contact.messages.length > 0">{{contact.messages[contact.messages.length - 1].message}}</p>
                             </div>
                         </div>
                         <div class="time">
-                            <p>{{contact.messages[contact.messages.length - 1].date}}</p>
+                            <p v-if="contact.messages.length > 0">{{contact.messages[contact.messages.length - 1].date}}</p>
+                            
                         </div>
+                       
                     </div>
     
                 </div>
@@ -88,13 +90,13 @@
                 <div class="chat">
                     
                     <div class="message" :class="message.status=='sent'?'sms-green':'sms-white'"
-                     v-for="(message, index) in contacts[activeIndex].messages" v-if="contacts.length > 0">
+                     v-for="(message, index) in contacts[activeIndex].messages" >
                         <p>{{message.message}}</p>
                         <div class="send-date">
                             <p>{{message.date}}</p>
                         </div>
                         <i class="fa-solid fa-chevron-down message-menu-toggler"></i>
-                        <ul class="message-menu" v-if="contacts.length > 0">
+                        <ul class="message-menu" >
                             <li>Message info</li>
                             <li @click="deletemessage(index)">Message delete</li>
                         </ul>
