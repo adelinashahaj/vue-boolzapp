@@ -88,13 +88,13 @@
                 <div class="chat">
                     
                     <div class="message" :class="message.status=='sent'?'sms-green':'sms-white'"
-                     v-for="(message, index) in contacts[activeIndex].messages">
+                     v-for="(message, index) in contacts[activeIndex].messages" v-if="contacts.length > 0">
                         <p>{{message.message}}</p>
                         <div class="send-date">
                             <p>{{message.date}}</p>
                         </div>
                         <i class="fa-solid fa-chevron-down message-menu-toggler"></i>
-                        <ul class="message-menu" >
+                        <ul class="message-menu" v-if="contacts.length > 0">
                             <li>Message info</li>
                             <li @click="deletemessage(index)">Message delete</li>
                         </ul>
