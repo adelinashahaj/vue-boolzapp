@@ -16,11 +16,12 @@
      
         
         <div class="container">
+             <!-- inizio contenitore sx -->
             <div class="side-bar-container">
                 <div class="user-info-container">
                     <div class="name">
                         <img src="img/avatar_io.jpg" alt="">
-                        <span>Sofia</span>
+                        <span>Adelina</span>
                     </div>
                     <div class="icons">
                         <i class="fa-solid fa-circle-notch"></i>
@@ -46,7 +47,9 @@
 
                 <div class="contacts-container">
 
-                    <div @click="activChat(index)" class="contact" v-for="(contact, index) in contacts"  v-show="contact.visible == true">
+                    <div @click="activChat(index)" class="contact" v-for="(contact, index) in contacts"  
+                    v-show="contact.visible == true" 
+                    :class="index==activeIndex?'active':''">
                         <div class="contact-info">
                             <img :src="contact.avatar" :alt="contact.name">
                             <div class="contact-text">
@@ -61,6 +64,9 @@
     
                 </div>
             </div>
+            <!-- fine contenitore sx -->
+
+            <!-- inizio contenitore dx -->
             <div class="chat-container">
 
                 <div class="contact-chat-bar">
@@ -81,15 +87,16 @@
 
                 <div class="chat">
                     
-                    <div class="message" :class="message.status=='sent'?'sms-green':'sms-white'"  v-for="message in contacts[activeIndex].messages">
+                    <div class="message" :class="message.status=='sent'?'sms-green':'sms-white'"
+                     v-for="(message, index) in contacts[activeIndex].messages">
                         <p>{{message.message}}</p>
                         <div class="send-date">
                             <p>{{message.date}}</p>
                         </div>
                         <i class="fa-solid fa-chevron-down message-menu-toggler"></i>
-                        <ul class="message-menu">
+                        <ul class="message-menu" >
                             <li>Message info</li>
-                            <li @click="deletemessage()">Message delete</li>
+                            <li @click="deletemessage(index)">Message delete</li>
                         </ul>
                         
                     </div>
@@ -102,6 +109,7 @@
                 </div>
     
             </div>
+            <!-- fine contenitore dx -->
         </div>
     
     

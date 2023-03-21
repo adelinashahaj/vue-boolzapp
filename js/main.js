@@ -199,8 +199,8 @@ createApp({
                 }
                 } )
     },
-    deletemessage(){
-        this.contacts[this.activeIndex].messages.splice(-1);
+    deletemessage(index){
+        this.contacts[this.activeIndex].messages.splice(index, 1);
       } 
   }
   
