@@ -124,7 +124,7 @@ color: grey;
    
     display: flex;
     justify-content: space-between;
-    padding: 8px 7px;
+    padding: 12px 7px;
 }
 .contact:not(:last-child){
     border-bottom: 1px solid #bababa;
@@ -145,7 +145,7 @@ color: grey;
 }
 
 .contact-info p {
-    font-size: smaller;
+    font-size: 12px;
     color: grey;
 }
 
