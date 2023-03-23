@@ -242,6 +242,7 @@ color: grey;
 }
 .message .message-menu-toggler:hover {
     cursor: pointer;
+    display: block;
 }
 
 .message .message-menu {

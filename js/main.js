@@ -10,6 +10,8 @@ createApp({
             activeIndex: 0,
             newMessage: '',
             searchString: '',
+            dropDownVisibile: false,
+            selectedMessage: null,
             contacts: [{
                     name: 'Michele',
                     avatar: './img/avatar_1.jpg',
@@ -202,8 +204,23 @@ createApp({
     deletemessage(index){
       
         this.contacts[this.activeIndex].messages.splice(index, 1);
-       
-      } 
+        this.selectedMessage = null;
+        this.dropDownVisibile = false;
+      },
+      showDown(index){
+        if(index == this.selectedMessage){
+            this.selectedMessage = null;
+            this.dropDownVisibile = false;
+        }else{
+            this.selectedMessage = index;
+            this.dropDownVisibile = true;
+        }
+
+      },
+     
+    
   }
+ 
+
   
 }).mount('#app')

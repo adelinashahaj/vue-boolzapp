@@ -77,7 +77,7 @@
                         <img :src="contacts[activeIndex].avatar" alt="">
                         <div class="contact-tex" >
                             <h4>{{contacts[activeIndex].name}}&#128515;</h4>
-                            <p>Ultimo accesso oggi alle 12.00</p>
+                            <p v-if="contacts[activeIndex].messages.length > 0">Ultimo accesso oggi alle {{contacts[activeIndex].messages[contacts[activeIndex].messages.length-1].date}}</p>
                             
                         </div>
                     </div>
@@ -96,8 +96,8 @@
                         <div class="send-date">
                             <p>{{message.date}}</p>
                         </div>
-                        <i class="fa-solid fa-chevron-down message-menu-toggler"></i>
-                        <ul class="message-menu" >
+                        <i class="fa-solid fa-chevron-down message-menu-toggler"@click="showDown(index)"></i>
+                        <ul class="message-menu"v-if="dropDownVisibile && index == selectedMessage" >
                             <li>Message info</li>
                             <li @click="deletemessage(index)">Message delete</li>
                         </ul>
